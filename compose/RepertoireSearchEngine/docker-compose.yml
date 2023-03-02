@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  repertoiremanagementservice:
+    image: ${DOCKER_REGISTRY-}repertoiremanagementservice
+    build:
+      context: ../../
+      dockerfile: src/RepertoireManagementService/RepertoireManagementService.Api/Dockerfile
+      target: runtime
+
+  usermanagementservice:
+    image: ${DOCKER_REGISTRY-}usermanagementservice
+    build:
+      context: ../../
+      dockerfile: src/UserManagementService/UserManagementService.Api/Dockerfile
+      target: runtime

@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>fb299922-4931-42ab-9c2f-fb3c58d09eeb</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileFile>Dockerfile</DockerfileFile>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
@@ -16,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RepertoireManagement.Infrastructure\RepertoireManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\RepertoireManagementService.Infrastructure\RepertoireManagementService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

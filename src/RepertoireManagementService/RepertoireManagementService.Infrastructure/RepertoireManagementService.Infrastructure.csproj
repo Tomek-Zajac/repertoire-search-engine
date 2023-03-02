@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RepertoireManagement\RepertoireManagement.Application\RepertoireManagement.Application.csproj" />
+    <ProjectReference Include="..\RepertoireManagementService.Application\RepertoireManagementService.Application.csproj" />
   </ItemGroup>
 
 </Project>
