@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  mongodb:
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo/init/:/docker-entrypoint-initdb.d/:ro
+    entrypoint: >
+      /usr/local/bin/docker-entrypoint.sh mongod --replSet rs0 --bind_ip_all

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Infrastructure": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "mongodb": "StartWithoutDebugging"
+      }
+    }
+  }
+}
