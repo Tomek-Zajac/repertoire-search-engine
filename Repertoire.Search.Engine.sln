@@ -41,6 +41,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "Infrastructure", "compose\Infrastructure\Infrastructure.dcproj", "{311AA67A-6A7B-4BA7-A19C-267CD8C07EBC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RepertoireSearchEngine", "RepertoireSearchEngine", "{477756D0-A13C-479C-889F-33F5F9AB820F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{811233E9-1CEE-4C60-8E27-E5CA2D345BB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Mongo", "src\Shared\Persistence\Persistence.Mongo\Persistence.Mongo\Persistence.Mongo.csproj", "{8926EF7A-E865-45D9-BDC2-17BA869A21AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "src\Shared\Constants\Constants\Constants.csproj", "{373B6156-AD84-4150-A409-0923298CA125}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Repository", "src\Shared\Persistence\Persistence.Repository\Persistence.Repository\Persistence.Repository.csproj", "{488E983B-3E03-4000-8FE3-B88716006385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepertoireSearchEngine.Client", "src\RepertoireSearchEngine\RepertoireSearchEngine\Client\RepertoireSearchEngine.Client.csproj", "{06FBDE10-F805-4A94-BEFE-363EEF6CE944}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +95,22 @@ Global
 		{311AA67A-6A7B-4BA7-A19C-267CD8C07EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{311AA67A-6A7B-4BA7-A19C-267CD8C07EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{311AA67A-6A7B-4BA7-A19C-267CD8C07EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8926EF7A-E865-45D9-BDC2-17BA869A21AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8926EF7A-E865-45D9-BDC2-17BA869A21AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8926EF7A-E865-45D9-BDC2-17BA869A21AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8926EF7A-E865-45D9-BDC2-17BA869A21AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373B6156-AD84-4150-A409-0923298CA125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373B6156-AD84-4150-A409-0923298CA125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373B6156-AD84-4150-A409-0923298CA125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373B6156-AD84-4150-A409-0923298CA125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488E983B-3E03-4000-8FE3-B88716006385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488E983B-3E03-4000-8FE3-B88716006385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488E983B-3E03-4000-8FE3-B88716006385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488E983B-3E03-4000-8FE3-B88716006385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06FBDE10-F805-4A94-BEFE-363EEF6CE944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06FBDE10-F805-4A94-BEFE-363EEF6CE944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06FBDE10-F805-4A94-BEFE-363EEF6CE944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06FBDE10-F805-4A94-BEFE-363EEF6CE944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +130,12 @@ Global
 		{4EB232AD-C7A3-44C9-B207-D077FE298D1A} = {CC21261E-E223-4DB4-9ACD-7EEE243C2182}
 		{94C221B4-38F0-4AB0-9259-566DB161BE3F} = {ED818B19-611A-4E9B-BF00-DAE967A24854}
 		{311AA67A-6A7B-4BA7-A19C-267CD8C07EBC} = {94C221B4-38F0-4AB0-9259-566DB161BE3F}
+		{477756D0-A13C-479C-889F-33F5F9AB820F} = {E3CA6C28-F196-4FB1-9E92-166C4321AA3F}
+		{811233E9-1CEE-4C60-8E27-E5CA2D345BB7} = {CC21261E-E223-4DB4-9ACD-7EEE243C2182}
+		{8926EF7A-E865-45D9-BDC2-17BA869A21AD} = {811233E9-1CEE-4C60-8E27-E5CA2D345BB7}
+		{373B6156-AD84-4150-A409-0923298CA125} = {CC21261E-E223-4DB4-9ACD-7EEE243C2182}
+		{488E983B-3E03-4000-8FE3-B88716006385} = {811233E9-1CEE-4C60-8E27-E5CA2D345BB7}
+		{06FBDE10-F805-4A94-BEFE-363EEF6CE944} = {477756D0-A13C-479C-889F-33F5F9AB820F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32F54F81-1DF9-44FD-8388-0DF1ACA2E822}
