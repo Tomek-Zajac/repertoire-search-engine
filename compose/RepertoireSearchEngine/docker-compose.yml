@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+  repertoiresearchengine:
+    image: ${DOCKER_REGISTRY-}repertoiresearchengine
+    build:
+      context: ../../
+      dockerfile: src/RepertoireSearchEngine/RepertoireSearchEngine.Server/Dockerfile
+      target: runtime
+
   repertoiremanagementservice:
     image: ${DOCKER_REGISTRY-}repertoiremanagementservice
     build:

@@ -1,0 +1,60 @@
+﻿@page "/repertoire"
+@using System.Globalization
+@using System.Net.Http
+@using System.Text.Json
+@using System.Threading.Tasks
+@using System.Linq
+@using RepertoireSearchEngine.Server.Dtos
+
+<h1>Cinema Repertoire</h1>
+
+<h1>Movies</h1>
+
+@if (repertoires == null)
+{
+    <p>Loading...</p>
+}
+else if (repertoires.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Rating</th>
+                <th>Showtimes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var repertoire in repertoires)
+            {
+                <tr>
+                    <td>@repertoire.MovieTitle</td>
+                    <td>@repertoire.Genre</td>
+                    <td>@repertoire.Rating</td>
+                    <td>@string.Join(", ", repertoire.Showtimes)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No repertoires found.</p>
+}
+
+
+@code {
+    private List<RepertoireDto> repertoires;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var client = new HttpClient { BaseAddress = new Uri("https://localhost:5010") };
+        var response = await client.GetAsync("repertoire");
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonString = await response.Content.ReadAsStringAsync();
+            repertoires = JsonSerializer.Deserialize<List<RepertoireDto>>(jsonString);
+        }
+    }
+}
