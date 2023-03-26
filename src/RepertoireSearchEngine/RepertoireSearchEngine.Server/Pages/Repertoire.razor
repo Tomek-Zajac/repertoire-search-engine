@@ -32,7 +32,11 @@ else if (repertoires.Any())
                     <td>@repertoire.MovieTitle</td>
                     <td>@repertoire.Genre</td>
                     <td>@repertoire.Rating</td>
-                    <td>@string.Join(", ", repertoire.Showtimes)</td>
+                    <td>@if (repertoire.Showtimes is not null)
+                        {
+                            string.Join(", ", repertoire.Showtimes);
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
@@ -45,16 +49,17 @@ else
 
 
 @code {
-    private List<RepertoireDto> repertoires;
+    private List<MovieDto> repertoires;
 
     protected override async Task OnInitializedAsync()
     {
-        using var client = new HttpClient { BaseAddress = new Uri("https://localhost:5010") };
+        using var client = new HttpClient { BaseAddress = new Uri("http://host.docker.internal:5010") };
         var response = await client.GetAsync("repertoire");
         if (response.IsSuccessStatusCode)
         {
             var jsonString = await response.Content.ReadAsStringAsync();
-            repertoires = JsonSerializer.Deserialize<List<RepertoireDto>>(jsonString);
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            repertoires = JsonSerializer.Deserialize<List<MovieDto>>(jsonString, options);
         }
     }
 }
