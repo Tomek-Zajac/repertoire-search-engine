@@ -33,9 +33,9 @@ else if (cinemas.Any())
                     <td>@cinema.CinemaName</td>
                     <td>@cinema.Repertoire.FirstOrDefault().MovieTitle</td>
                     <td>
-                        @if (cinema.Repertoire[0].Showtimes is not null)
+                        @if (cinema.Repertoire.FirstOrDefault().Showtimes is not null)
                         {
-                            string.Join(", ", cinema.Repertoire[0].Showtimes);
+                            string.Join(", ", cinema.Repertoire.FirstOrDefault().Showtimes);
                         }
                      </td>
                 </tr>
