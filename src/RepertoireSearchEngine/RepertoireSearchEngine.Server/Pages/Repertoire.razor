@@ -5,40 +5,41 @@
 @using System.Threading.Tasks
 @using System.Linq
 @using RepertoireSearchEngine.Server.Dtos
+@using RepertoireSearchEngine.Server.Services.Interfaces;
+@inject ICinemaService CinemaService;
 
 <h1>Cinema Repertoire</h1>
 
 <h1>Movies</h1>
 
-@if (repertoires == null)
+@if (cinemas == null)
 {
     <p>Loading...</p>
 }
-else if (repertoires.Any())
+else if (cinemas.Any())
 {
     <table>
         <thead>
             <tr>
+                <th>Cinema</th>
                 <th>Title</th>
-                <th>Genre</th>
-                <th>Rating</th>
                 <th>Showtimes</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var repertoire in repertoires)
+            @foreach (var cinema in cinemas)
             {
                 <tr>
-                    <td>@repertoire.MovieTitle</td>
-                    <td>@repertoire.Genre</td>
-                    <td>@repertoire.Rating</td>
-                    <td>@if (repertoire.Showtimes is not null)
+                    <td>@cinema.CinemaName</td>
+                    <td>@cinema.Repertoire.FirstOrDefault().MovieTitle</td>
+                    <td>
+                        @if (cinema.Repertoire[0].Showtimes is not null)
                         {
-                            string.Join(", ", repertoire.Showtimes);
+                            string.Join(", ", cinema.Repertoire[0].Showtimes);
                         }
-                    </td>
+                     </td>
                 </tr>
-            }
+             }
         </tbody>
     </table>
 }
@@ -49,17 +50,11 @@ else
 
 
 @code {
-    private List<MovieDto> repertoires;
+    private IEnumerable<CinemaDto> cinemas;
+    private IEnumerable<RepertoireDto> repertoires;
 
     protected override async Task OnInitializedAsync()
     {
-        using var client = new HttpClient { BaseAddress = new Uri("http://host.docker.internal:5010") };
-        var response = await client.GetAsync("repertoire");
-        if (response.IsSuccessStatusCode)
-        {
-            var jsonString = await response.Content.ReadAsStringAsync();
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            repertoires = JsonSerializer.Deserialize<List<MovieDto>>(jsonString, options);
-        }
+        cinemas = await CinemaService.GetCinemasAsync();
     }
 }

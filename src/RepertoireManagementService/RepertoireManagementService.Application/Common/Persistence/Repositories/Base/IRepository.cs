@@ -1,8 +1,8 @@
 ﻿using Domain.Interfaces;
 
-namespace Persistence.Repository.Repositories.Interface;
+namespace RepertoireManagementService.Application.Common.Persistence.Repositories.Base;
 
-public interface IRepository<T> where T : IEntity
+public interface IRepository<T> where T : class, IEntity
 {
     Task<IEnumerable<T>> GetAllAsync();
     Task<T> GetByIdAsync(string id);

@@ -1,11 +1,21 @@
-using RepertoireSearchEngine.Server.Data;
+using Microsoft.Extensions.Options;
+using RepertoireSearchEngine.Server;
+using RepertoireSearchEngine.Server.Options;
+using RepertoireSearchEngine.Server.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped<ICinemaService, CinemaService>();
+
+builder.Services.Configure<RepertoireServiceOptions>(builder.Configuration.GetSection("RepertoireService"));
+builder.Services.AddHttpClient<ICinemaService, CinemaService>((serviceProvider, client) =>
+{
+    var options = serviceProvider.GetRequiredService<IOptions<RepertoireServiceOptions>>();
+    client.BaseAddress = new Uri(options.Value.BaseUrl);
+});
 
 var app = builder.Build();
 

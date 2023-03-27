@@ -13,12 +13,9 @@ public class RepertoireEntity : IEntity
     [BsonElement("movieTitle")]
     public string MovieTitle { get; set; }
 
-    [BsonElement("genre")]
-    public string Genre { get; set; }
-
-    [BsonElement("rating")]
-    public double Rating { get; set; }
-
     [BsonElement("showtimes")]
-    public List<DateTime> Showtimes { get; set; }
+    public List<string> Showtimes { get; set; } = new List<string>();
+
+    [BsonElement("imageUrl")]
+    public string ImageUrl { get; set; }
 }

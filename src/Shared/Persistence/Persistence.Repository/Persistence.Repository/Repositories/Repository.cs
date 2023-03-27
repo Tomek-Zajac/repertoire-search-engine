@@ -1,11 +1,6 @@
 ﻿using Domain.Interfaces;
 using MongoDB.Driver;
 using Persistence.Repository.Repositories.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Repository.Repositories;
 
@@ -45,5 +40,20 @@ public class Repository<T> : IRepository<T> where T : IEntity
     {
         var filter = Builders<T>.Filter.Eq("_id", id);
         await _collection.DeleteOneAsync(filter);
+    }
+
+    Task<IEnumerable<T>> IRepository<T>.GetAllAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task AddAsync(T entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(T entity)
+    {
+        throw new NotImplementedException();
     }
 }

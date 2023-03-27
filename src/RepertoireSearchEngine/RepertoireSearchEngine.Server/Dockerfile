@@ -15,6 +15,11 @@ RUN dotnet build "RepertoireSearchEngine.Server.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "RepertoireSearchEngine.Server.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 
+WORKDIR /app
+COPY --from=build /app/out .
+COPY RepertoireSearchEngine.Server.styles.css /app/wwwroot/css
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
