@@ -25,9 +25,9 @@ class UpdateCinemaCommandHandler : IRequestHandler<UpdateCinemaCommand, Response
 
     public async ValueTask<Response<bool>> Handle(UpdateCinemaCommand request, CancellationToken cancellationToken)
     {
-        var cinemaToAdd = request.Adapt<CinemaEntity>();
+        var cinemaToUpdate = request.Adapt<CinemaEntity>();
 
-        var updateResult = await _repository.UpdateAsync(cinemaToAdd, cancellationToken);
+        var updateResult = await _repository.UpdateAsync(cinemaToUpdate, cancellationToken);
 
         return updateResult
             ? new Response<bool> { Success = true }

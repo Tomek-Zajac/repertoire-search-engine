@@ -14,11 +14,11 @@ public record CreateCinemaCommand(
     string ZipCode) : IRequest<Response<string>>;
 
 
-class CreateCinemaCommandyHandler : IRequestHandler<CreateCinemaCommand, Response<string>>
+class CreateCinemaCommandHandler : IRequestHandler<CreateCinemaCommand, Response<string>>
 {
     private readonly IRepository<CinemaEntity> _repository;
 
-    public CreateCinemaCommandyHandler(IRepository<CinemaEntity> repository)
+    public CreateCinemaCommandHandler(IRepository<CinemaEntity> repository)
     {
         _repository = repository;
     }
