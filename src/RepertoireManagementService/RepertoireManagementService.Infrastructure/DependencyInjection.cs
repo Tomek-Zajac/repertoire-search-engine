@@ -29,7 +29,7 @@ public static class DependencyInjection
         });
 
         // Register repository classes
-        services.AddScoped<IRepository<CinemaEntity>, CinemaRepository>();
+        services.AddSingleton<IRepository<CinemaEntity>, CinemaRepository>();
 
         return services;
     }

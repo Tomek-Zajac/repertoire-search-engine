@@ -14,28 +14,27 @@ public class CinemaRepository : IRepository<CinemaEntity>
         _collection = database.GetCollection<CinemaEntity>("cinemas");
     }
 
-    public async Task<IEnumerable<CinemaEntity>> GetAllAsync()
+    public async Task<IEnumerable<CinemaEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+        => await _collection.Find(_ => true).ToListAsync(cancellationToken: cancellationToken);
+
+    public async Task<CinemaEntity> GetByIdAsync(string id, CancellationToken cancellationToken = default)
+        => await _collection.Find(c => c.Id == id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
+
+    public async Task<CinemaEntity> AddAsync(CinemaEntity entity, CancellationToken cancellationToken = default)
     {
-        return await _collection.Find(_ => true).ToListAsync();
+        await _collection.InsertOneAsync(entity, cancellationToken: cancellationToken);
+        return entity;
     }
 
-    public async Task<CinemaEntity> GetByIdAsync(string id)
+    public async Task<bool> UpdateAsync(CinemaEntity entity, CancellationToken cancellationToken = default)
     {
-        return await _collection.Find(c => c.Id == id).FirstOrDefaultAsync();
+        var updateResult = await _collection.ReplaceOneAsync(c => c.Id == entity.Id, entity);
+        return updateResult.IsAcknowledged;
     }
 
-    public async Task AddAsync(CinemaEntity entity)
+    public async Task<bool> DeleteAsync(string entity, CancellationToken cancellationToken = default)
     {
-        await _collection.InsertOneAsync(entity);
-    }
-
-    public async Task UpdateAsync(CinemaEntity entity)
-    {
-        await _collection.ReplaceOneAsync(c => c.Id == entity.Id, entity);
-    }
-
-    public async Task DeleteAsync(CinemaEntity entity)
-    {
-        await _collection.DeleteOneAsync(c => c.Id == entity.Id);
+        var deleteResult = await _collection.DeleteOneAsync(c => c.Id == entity, cancellationToken: cancellationToken);
+        return deleteResult.IsAcknowledged && deleteResult.DeletedCount > 0;
     }
 }
