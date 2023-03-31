@@ -22,7 +22,7 @@ public class CinemasController : ControllerBase
         var result = await _mediator.Send(GetCinemasQuery.Instance);
 
         return result.Success
-            ? Ok(result)
+            ? Ok(result.Data)
             : NotFound();
     }
 
@@ -32,7 +32,7 @@ public class CinemasController : ControllerBase
         var result = await _mediator.Send(new GetCinemaByIdQuery(id));
 
         return result.Success
-            ? Ok(result)
+            ? Ok(result.Data)
             : NotFound();
     }
 
@@ -43,7 +43,7 @@ public class CinemasController : ControllerBase
             new CreateCinemaCommand(cinema.CinemaName, cinema.Address, cinema.City, cinema.State, cinema.ZipCode));
 
         return result.Success
-            ? Ok(result)
+            ? Ok(result.Data)
             : NotFound();
     }
 
@@ -54,7 +54,7 @@ public class CinemasController : ControllerBase
             new UpdateCinemaCommand(cinema.Id, cinema.CinemaName, cinema.Address, cinema.City, cinema.State, cinema.ZipCode));
 
         return result.Success
-            ? Ok(result)
+            ? Ok(result.Data)
             : NotFound();
     }
 
@@ -65,7 +65,7 @@ public class CinemasController : ControllerBase
             new DeleteCinemaCommand(id));
 
         return result.Success
-            ? Ok(result)
+            ? Ok(result.Data)
             : NotFound();
     }
 }
