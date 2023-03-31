@@ -1,11 +1,11 @@
 ﻿using Domain.Entities;
+using Mapster;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using RepertoireManagementService.Application.Common.Interfaces;
 using RepertoireManagementService.Application.Common.Persistence.Repositories.Base;
+using RepertoireManagementService.Application.Modules.Cinemas.Dtos;
 using RepertoireManagementService.Infrastructure.Persistence.Repositories;
-using RepertoireManagementService.Infrastructure.Services;
 
 namespace RepertoireManagementService.Infrastructure;
 
@@ -14,14 +14,9 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services)
     {
-        //add httpClient
-        services.AddHttpClient<IShowtimeService, ShowtimeService>((serviceProvider, client) =>
-        {
-            client.BaseAddress = new Uri("https://serpapi.com");
-        });
 
         // Configure MongoDB connection
-        services.AddSingleton<IMongoClient>(sp => 
+        services.AddSingleton<IMongoClient>(sp =>
         { 
             var configuration = sp.GetService<IConfiguration>();
             var connectionString = configuration.GetConnectionString("MyMongoDB");
@@ -30,6 +25,7 @@ public static class DependencyInjection
 
         // Register repository classes
         services.AddSingleton<IRepository<CinemaEntity>, CinemaRepository>();
+        services.AddSingleton<IRepository<ShowtimeEntity>, ShowtimeRepository>();
 
         return services;
     }

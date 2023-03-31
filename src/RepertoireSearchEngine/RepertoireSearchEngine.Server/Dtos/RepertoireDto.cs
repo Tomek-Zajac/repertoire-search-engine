@@ -1,9 +1,8 @@
 ﻿namespace RepertoireSearchEngine.Server.Dtos;
 
 public class RepertoireDto
-{ 
+{
     public string Id { get; set; }
-    public string MovieTitle { get; set; }
-    public List<string> Showtimes { get; set; }
-    public string ImageUrl { get; set; }
+    public List<MovieDto> Movies { get; set; }
+    public List<SittingDto> Sittings { get; set; }
 }

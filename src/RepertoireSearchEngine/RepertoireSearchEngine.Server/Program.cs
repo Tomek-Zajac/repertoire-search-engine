@@ -2,6 +2,7 @@ using Microsoft.Extensions.Options;
 using RepertoireSearchEngine.Server;
 using RepertoireSearchEngine.Server.Options;
 using RepertoireSearchEngine.Server.Services.Interfaces;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,11 @@ builder.Services.AddHttpClient<ICinemaService, CinemaService>((serviceProvider, 
 {
     var options = serviceProvider.GetRequiredService<IOptions<RepertoireServiceOptions>>();
     client.BaseAddress = new Uri(options.Value.BaseUrl);
+});
+
+builder.Services.AddSingleton(new JsonSerializerOptions()
+{
+    PropertyNameCaseInsensitive = true,
 });
 
 var app = builder.Build();

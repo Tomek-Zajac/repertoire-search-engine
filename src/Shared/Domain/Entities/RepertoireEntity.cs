@@ -10,12 +10,9 @@ public class RepertoireEntity : IEntity
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 
-    [BsonElement("movieTitle")]
-    public string MovieTitle { get; set; }
+    [BsonElement("movies")]
+    public IEnumerable<MovieEntity> Movies { get; set; } = new List<MovieEntity>();
 
-    [BsonElement("showtimes")]
-    public List<string> Showtimes { get; set; } = new List<string>();
-
-    [BsonElement("imageUrl")]
-    public string ImageUrl { get; set; }
+    [BsonElement("sittings")]
+    public IEnumerable<SittingEntity> Sittings { get; set; } = new List<SittingEntity>();
 }

@@ -26,5 +26,5 @@ public class CinemaEntity : IEntity
     public string ZipCode { get; set; }
 
     [BsonElement("repertoire")]
-    public List<RepertoireEntity> Repertoire { get; set; } = new List<RepertoireEntity>();
+    public IEnumerable<RepertoireEntity> Repertoire { get; set; } = new List<RepertoireEntity>();
 }

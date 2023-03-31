@@ -1,4 +1,4 @@
-﻿@page "/repertoire"
+﻿@page "/cinemas"
 @using System.Globalization
 @using System.Net.Http
 @using System.Text.Json
@@ -31,13 +31,28 @@ else if (cinemas.Any())
             {
                 <tr>
                     <td>@cinema.CinemaName</td>
-                    <td>@cinema.Repertoire.FirstOrDefault().MovieTitle</td>
-                    <td>
-                        @if (cinema.Repertoire.FirstOrDefault().Showtimes is not null)
+                    @foreach (var repertoire in cinema.Repertoire)
+                    {
+                        @foreach (var movies in repertoire.Movies)
                         {
-                            string.Join(", ", cinema.Repertoire.FirstOrDefault().Showtimes);
+                            <td>@movies.MovieTitle</td>
                         }
-                     </td>
+                        @foreach (var sittings in repertoire.Sittings)
+                        {
+                            <td>@sittings.Name</td>
+                            <td>@sittings.Price</td>
+                            @foreach (var seats in sittings.Seats)
+                            {
+                                <td>@seats.Row</td>
+                                <td>
+                                    @if (seats.Seats is not null)
+                                    {
+                                        string.Join(", ", seats.Seats);
+                                    }
+                                </td>
+                            }
+                        }
+                    }
                 </tr>
              }
         </tbody>

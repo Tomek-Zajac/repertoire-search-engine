@@ -10,24 +10,48 @@ db.getCollection("cinemas").insertMany([{
     "zipCode": "10001",
     "repertoire": [
         {
-            "_id": ObjectId("64207fa0283a793a0f059ef5"),
-            "movieTitle": "Avengers: Endgame",
-            "showtimes": [
-                "2023-03-27 13:00:00",
-                "2023-03-27 16:00:00",
-                "2023-03-27 19:00:00"
+            "_id": ObjectId("62207fa0283a793a0f059e12"),
+            "movies": [
+                {
+                    "_id": ObjectId("64207fa0283a793a0f059ef5"),
+                    "movieTitle": "Avengers: Endgame",
+                    "showtimes": [
+                        "2023-03-27 13:00:00",
+                        "2023-03-27 16:00:00",
+                        "2023-03-27 19:00:00"
+                    ],
+                    "imageUrl": "https://static.posters.cz/image/1300/plakaty/avengers-endgame-journey-s-end-i122136.jpg"
+                },
+                {
+                    "_id": ObjectId("64207fa0283a793a0f059ef7"),
+                    "movieTitle": "Jurassic World",
+                    "showtimes": [
+                        "2023-03-27 14:00:00",
+                        "2023-03-27 17:00:00",
+                        "2023-03-27 20:00:00"
+                    ],
+                    "imageUrl": "https://sm.ign.com/ign_pl/screenshot/default/jurassic-world_pjs9.jpg"
+                }
             ],
-            "imageUrl": "https://static.posters.cz/image/1300/plakaty/avengers-endgame-journey-s-end-i122136.jpg"
-        },
-        {
-            "_id": ObjectId("64207fa0283a793a0f059ef7"),
-            "movieTitle": "Jurassic World",
-            "showtimes": [
-                "2023-03-27 14:00:00",
-                "2023-03-27 17:00:00",
-                "2023-03-27 20:00:00"
-            ],
-            "imageUrl": "https://sm.ign.com/ign_pl/screenshot/default/jurassic-world_pjs9.jpg"
+            "sittings": [
+                {
+                    "name": "Standard",
+                    "price": 12.99,
+                    "seats": [
+                        { "row": "A", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+                        { "row": "B", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+                        { "row": "C", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] }
+                    ]
+                },
+                {
+                    "name": "VIP",
+                    "price": 24.99,
+                    "seats": [
+                        { "row": "D", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+                        { "row": "E", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] }
+                    ]
+                }
+            ]
         }
     ]
 },
@@ -40,24 +64,48 @@ db.getCollection("cinemas").insertMany([{
     "zipCode": "90001",
     "repertoire": [
         {
-            "_id": ObjectId("64207fa0283a793a0f059e11"),
-            "movieTitle": "The Dark Knight",
-            "showtimes": [
-                "2023-03-27 12:00:00",
-                "2023-03-27 15:00:00",
-                "2023-03-27 18:00:00"
+            "_id": ObjectId("64207fa0283a793a0f059e13"),
+            "movies": [
+                {
+                    "_id": ObjectId("64207fa0283a793a0f059e11"),
+                    "movieTitle": "The Dark Knight",
+                    "showtimes": [
+                        "2023-03-27 12:00:00",
+                        "2023-03-27 15:00:00",
+                        "2023-03-27 18:00:00"
+                    ],
+                    "imageUrl": "https://www.example.com/images/dark-knight.jpg"
+                },
+                {
+                    "_id": ObjectId("64207fa0283a793a0f059e12"),
+                    "movieTitle": "Jurassic World",
+                    "showtimes": [
+                        "2023-03-27 14:00:00",
+                        "2023-03-27 17:00:00",
+                        "2023-03-27 20:00:00"
+                    ],
+                    "imageUrl": "https://www.example.com/images/jurassic-world.jpg"
+                }
             ],
-            "imageUrl": "https://www.example.com/images/dark-knight.jpg"
-        },
-        {
-            "_id": ObjectId("64207fa0283a793a0f059e12"),
-            "movieTitle": "Jurassic World",
-            "showtimes": [
-                "2023-03-27 14:00:00",
-                "2023-03-27 17:00:00",
-                "2023-03-27 20:00:00"
-            ],
-            "imageUrl": "https://www.example.com/images/jurassic-world.jpg"
+            "sittings": [
+                {
+                    "name": "Standard",
+                    "price": 12.99,
+                    "seats": [
+                        { "row": "A", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+                        { "row": "B", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+                        { "row": "C", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] }
+                    ]
+                },
+                {
+                    "name": "VIP",
+                    "price": 24.99,
+                    "seats": [
+                        { "row": "D", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+                        { "row": "E", "seats": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] }
+                    ]
+                }
+            ]
         }
     ]
 }
