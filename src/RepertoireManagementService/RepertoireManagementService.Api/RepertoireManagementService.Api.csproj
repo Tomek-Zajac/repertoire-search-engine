@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileFile>Dockerfile</DockerfileFile>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <DockerfileFile>Dockerfile</DockerfileFile>
   </PropertyGroup>
 
   <ItemGroup>

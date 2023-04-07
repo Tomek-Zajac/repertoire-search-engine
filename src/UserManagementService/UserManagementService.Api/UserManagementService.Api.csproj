@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileFile>Dockerfile</DockerfileFile>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <DockerfileFile>Dockerfile</DockerfileFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RepertoireManagementService\RepertoireManagementService.Infrastructure\RepertoireManagementService.Infrastructure.csproj" />
+    <ProjectReference Include="..\UserManagementService.Infrastructure\UserManagementService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
