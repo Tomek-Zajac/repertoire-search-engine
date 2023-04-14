@@ -6,18 +6,15 @@ services:
     build:
       context: ../../
       dockerfile: src/RepertoireSearchEngine/RepertoireSearchEngine.Server/Dockerfile
-      target: runtime
 
   repertoiremanagementservice:
     image: ${DOCKER_REGISTRY-}repertoiremanagementservice
     build:
       context: ../../
       dockerfile: src/RepertoireManagementService/RepertoireManagementService.Api/Dockerfile
-      target: runtime
 
   usermanagementservice:
     image: ${DOCKER_REGISTRY-}usermanagementservice
     build:
       context: ../../
       dockerfile: src/UserManagementService/UserManagementService.Api/Dockerfile
-      target: runtime
