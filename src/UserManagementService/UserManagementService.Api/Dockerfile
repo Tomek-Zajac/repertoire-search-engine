@@ -7,8 +7,10 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["NuGet.Config", "."]
 COPY ["src/UserManagementService/UserManagementService.Api/UserManagementService.Api.csproj", "src/UserManagementService/UserManagementService.Api/"]
-COPY ["src/UserManagementService/UserManagementService.Infrastructure/UserManagementService.Infrastructure.csproj", "src/UserManagementService/UserManagementService.Infrastructure/"]
+COPY ["src/UserManagementService/UserManaSgementService.Infrastructure/UserManagementService.Infrastructure.csproj", "src/UserManagementService/UserManagementService.Infrastructure/"]
 COPY ["src/UserManagementService/UserManagementService.Application/UserManagementService.Application.csproj", "src/UserManagementService/UserManagementService.Application/"]
+#RUN apt-get update && apt-get install -y curl
+RUN curl -LJO https://github.com/Tomek-Zajac/repertoire-search-engine/archive/refs/heads/main.zip
 RUN dotnet restore "src/UserManagementService/UserManagementService.Api/UserManagementService.Api.csproj"
 COPY . .
 WORKDIR "/src/src/UserManagementService/UserManagementService.Api"

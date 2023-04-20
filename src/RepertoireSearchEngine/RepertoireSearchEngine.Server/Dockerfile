@@ -7,6 +7,8 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["NuGet.Config", "."]
 COPY ["src/RepertoireSearchEngine/RepertoireSearchEngine.Server/RepertoireSearchEngine.Server.csproj", "src/RepertoireSearchEngine/RepertoireSearchEngine.Server/"]
+#RUN apt-get update && apt-get install -y curl
+RUN curl -LJO https://github.com/Tomek-Zajac/repertoire-search-engine/archive/refs/heads/main.zip
 RUN dotnet restore "src/RepertoireSearchEngine/RepertoireSearchEngine.Server/RepertoireSearchEngine.Server.csproj"
 COPY . .
 WORKDIR "/src/src/RepertoireSearchEngine/RepertoireSearchEngine.Server"

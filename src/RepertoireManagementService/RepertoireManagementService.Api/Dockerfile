@@ -10,6 +10,9 @@ COPY ["src/RepertoireManagementService/RepertoireManagementService.Api/Repertoir
 COPY ["src/Shared/Domain/Domain.csproj", "src/Shared/Domain/"]
 COPY ["src/RepertoireManagementService/RepertoireManagementService.Infrastructure/RepertoireManagementService.Infrastructure.csproj", "src/RepertoireManagementService/RepertoireManagementService.Infrastructure/"]
 COPY ["src/RepertoireManagementService/RepertoireManagementService.Application/RepertoireManagementService.Application.csproj", "src/RepertoireManagementService/RepertoireManagementService.Application/"]
+#RUN apt-get update && apt-get install -y curl
+RUN curl -LJO https://github.com/Tomek-Zajac/repertoire-search-engine/archive/refs/heads/main.zip
+
 RUN dotnet restore "src/RepertoireManagementService/RepertoireManagementService.Api/RepertoireManagementService.Api.csproj"
 COPY . .
 WORKDIR "/src/src/RepertoireManagementService/RepertoireManagementService.Api"
