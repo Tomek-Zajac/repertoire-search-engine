@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["src/RepertoireSearchEngine/RepertoireSearchEngine.Server/RepertoireSearchEngine.Server.csproj", "src/RepertoireSearchEngine/RepertoireSearchEngine.Server/"]
 RUN curl https://github.com/Tomek-Zajac/repertoire-search-engine/blob/master/src/RepertoireSearchEngine/RepertoireSearchEngine.Server/RepertoireSearchEngine.Server.csproj
-RUN dotnet restore "src/RepertoireSearchEngine/RepertoireSearchEngine.Server/RepertoireSearchEngine.Server.csproj" --source https://github.com/Tomek-Zajac/repertoire-search-engine
+RUN dotnet restore "src/RepertoireSearchEngine/RepertoireSearchEngine.Server/RepertoireSearchEngine.Server.csproj" --source https://api.nuget.org/v3/index.json
 COPY . .
 WORKDIR "/src/src/RepertoireSearchEngine/RepertoireSearchEngine.Server"
 RUN dotnet build "RepertoireSearchEngine.Server.csproj" -c Release -o /app/build

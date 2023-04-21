@@ -10,7 +10,7 @@ COPY ["src/Shared/Domain/Domain.csproj", "src/Shared/Domain/"]
 COPY ["src/RepertoireManagementService/RepertoireManagementService.Infrastructure/RepertoireManagementService.Infrastructure.csproj", "src/RepertoireManagementService/RepertoireManagementService.Infrastructure/"]
 COPY ["src/RepertoireManagementService/RepertoireManagementService.Application/RepertoireManagementService.Application.csproj", "src/RepertoireManagementService/RepertoireManagementService.Application/"]
 RUN curl https://github.com/Tomek-Zajac/repertoire-search-engine/blob/master/src/RepertoireManagementService/RepertoireManagementService.Api/RepertoireManagementService.Api.csproj
-RUN dotnet restore "src/RepertoireManagementService/RepertoireManagementService.Api/RepertoireManagementService.Api.csproj" --source https://github.com/Tomek-Zajac/repertoire-search-engine
+RUN dotnet restore "src/RepertoireManagementService/RepertoireManagementService.Api/RepertoireManagementService.Api.csproj" --source https://api.nuget.org/v3/index.json
 COPY . .
 WORKDIR "/src/src/RepertoireManagementService/RepertoireManagementService.Api"
 RUN dotnet build "RepertoireManagementService.Api.csproj" -c Release -o /app/build
