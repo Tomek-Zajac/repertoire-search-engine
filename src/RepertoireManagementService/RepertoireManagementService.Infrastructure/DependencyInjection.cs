@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using RepertoireManagementService.Application.Common.Persistence.Repositories.Base;
 using RepertoireManagementService.Application.Modules.Cinemas.Dtos;
+using RepertoireManagementService.Infrastructure.Persistence;
 using RepertoireManagementService.Infrastructure.Persistence.Repositories;
 
 namespace RepertoireManagementService.Infrastructure;
@@ -26,6 +27,8 @@ public static class DependencyInjection
         // Register repository classes
         services.AddSingleton<IRepository<CinemaEntity>, CinemaRepository>();
         services.AddSingleton<IRepository<ShowtimeEntity>, ShowtimeRepository>();
+
+        ClassMaps.RegisterClassMaps();
 
         return services;
     }
